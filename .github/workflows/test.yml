@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: 1. Get data from repo
         uses: actions/checkout@v4
+        with:
+          path: xxx
 
       - name: 2. Authorize with Google Cloud
         uses: 'google-github-actions/auth@v2'
@@ -24,7 +26,7 @@ jobs:
 
       - name: 4. Synchronize files
         run: |
-          SOURCE_FOLDER="./"
+          SOURCE_FOLDER="xxx"
           IGNORE=".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$"
           TARGET_BUCKET="folder_cz" # Target bucket in GCS
           TARGET_FOLDER="subfolder" # Target folder in GCS bucket where data will be synchronized. Data that are missing in Git will be automatically dropped.
