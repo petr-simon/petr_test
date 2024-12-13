@@ -13,10 +13,6 @@ jobs:
 
     env:
       GIT_FOLDER: repository
-      IGNORE: ".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$"
-      TARGET_BUCKET: folder_cz # Target bucket in GCS
-      TARGET_FOLDER: subfolder # Target folder in GCS bucket where data will be synchronized. Data that are missing in Git will be automatically dropped.
-
 
     steps:
       - name: 1. Get data from repo
@@ -34,4 +30,8 @@ jobs:
 
       - name: 4. Synchronize files
         run: |
+          SOURCE_FOLDER="$GIT_FOLDER"
+          IGNORE=".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$"
+          TARGET_BUCKET="folder_cz" # Target bucket in GCS
+          TARGET_FOLDER="subfolder" # Target folder in GCS bucket where data will be synchronized. Data that are missing in Git will be automatically dropped.
           gsutil -m rsync -r -c -d -x "$IGNORE" $GIT_FOLDER gs://$TARGET_BUCKET/$TARGET_FOLDER
