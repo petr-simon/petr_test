@@ -14,13 +14,13 @@ jobs:
       - name: 1. Get data from repo
         uses: actions/checkout@v4
 
-      - name: 2. Synchronize all files
+      - name: 2. Authorize
         uses: 'google-github-actions/auth@v2'
         with:
           service_account: 'petr-test@dev-petr.iam.gserviceaccount.com'
           credentials_json: ${{ secrets.google_cloud_storage }}
 
-      - name: '3. Set up Cloud SDK'
+      - name: '3. Prepare Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           version: '>= 363.0.0'
