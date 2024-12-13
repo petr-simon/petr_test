@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     env:
-      GIT_SUBFOLDER: rep # Arbitrary subfolder for git files
+      GIT_SUBFOLDER: rep # Arbitrary git subfolder
 
     steps:
       - name: 1. Get data from repo
