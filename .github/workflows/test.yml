@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     env:
-      GIT_SUBFOLDER: rep
+      GIT_SUBFOLDER: rep # Arbitrary subfolder for whole git repository
 
     steps:
       - name: 1. Get data from repo
@@ -30,7 +30,7 @@ jobs:
 
       - name: 4. Synchronize files
         run: |
-          SOURCE_FOLDER="${{env.GIT_SUBFOLDER}}" # Source folder that will be synchronized.
+          SOURCE_FOLDER="${{env.GIT_SUBFOLDER}}/beta" # Source folder that will be synchronized.
           TARGET_BUCKET="folder_cz" # Target bucket in GCS.
           TARGET_FOLDER="subfolder" # Target folder in GCS bucket where data will be synchronized. Data that are missing in Git will be automatically dropped.
           IGNORE=".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$" # Ignore files and folders.
