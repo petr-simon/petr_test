@@ -18,3 +18,4 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           service_account: 'petr-test@dev-petr.iam.gserviceaccount.com'
+          credentials_json: ${{ secrets.google_cloud_storage }}
