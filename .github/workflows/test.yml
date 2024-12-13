@@ -18,7 +18,7 @@ jobs:
       - name: 1. Get data from repo
         uses: actions/checkout@v4
         with:
-          path: $GIT_FOLDER
+          path: ${{env.GIT_FOLDER}}
 
       - name: 2. Authorize with Google Cloud
         uses: 'google-github-actions/auth@v2'
