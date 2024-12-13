@@ -12,13 +12,13 @@ jobs:
     runs-on: ubuntu-24.04
 
     env:
-      GIT_FOLDER: repository
+      GIT_SUBFOLDER: rep
 
     steps:
       - name: 1. Get data from repo
         uses: actions/checkout@v4
         with:
-          path: ${{env.GIT_FOLDER}}
+          path: ${{env.GIT_SUBFOLDER}}
 
       - name: 2. Authorize with Google Cloud
         uses: 'google-github-actions/auth@v2'
@@ -30,8 +30,8 @@ jobs:
 
       - name: 4. Synchronize files
         run: |
-          SOURCE_FOLDER="$GIT_FOLDER"
+          SOURCE_FOLDER="$GIT_SUBFOLDER"
           IGNORE=".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$"
           TARGET_BUCKET="folder_cz" # Target bucket in GCS
           TARGET_FOLDER="subfolder" # Target folder in GCS bucket where data will be synchronized. Data that are missing in Git will be automatically dropped.
-          gsutil -m rsync -r -c -d -x "$IGNORE" $GIT_FOLDER gs://$TARGET_BUCKET/$TARGET_FOLDER
+          gsutil -m rsync -r -c -d -x "$SOURCE_FOLDER" $GIT_FOLDER gs://$TARGET_BUCKET/$TARGET_FOLDER
