@@ -22,4 +22,5 @@ jobs:
 
       - name: 'upload-folder'
         run: |
+          dir
           gsutil -m rsync -r -c -d -x ".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$" /github/workspace/petr_test/beta gs://folder_cz/subfolder
