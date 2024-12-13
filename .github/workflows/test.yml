@@ -1,0 +1,23 @@
+name: Google Cloud Storage Synchronization
+
+# Run after new push into main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Synchronize files
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Get data from repo
+        uses: actions/checkout@v4
+
+      - name: 2. Synchronize all files
+        uses: patrickwyler/gcs-bucket-sync-action@1.4
+        with:
+          secrets: ${{ secrets.google_cloud_storage }}
+          sync_dir_to: subfolder
+          bucket: 'folder_cz'
+          exclude: '.*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$'
