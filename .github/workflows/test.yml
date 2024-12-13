@@ -24,4 +24,4 @@ jobs:
 
       - name: 4. Synchronize files
         run: |
-          gsutil -m rsync -r -c -d -x ".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$" beta gs://folder_cz/subfolder
+          gsutil -m rsync -r -c -d -x ".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$" beta gs://folder_czd/subfolder
