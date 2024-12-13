@@ -27,7 +27,4 @@ jobs:
 
       - name: 'upload-folder'
         run: |
-          # echo ${{ secrets.google_cloud_storage }} > /secrets.json
-          # gcloud auth activate-service-account --key-file=/secrets.json
-          # rm /secrets.json
           gsutil -m rsync -r -c -d -x ".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$" beta gs://folder_cz/subfolder
