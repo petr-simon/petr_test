@@ -24,4 +24,4 @@ jobs:
         uses: 'google-github-actions/upload-cloud-storage@v2'
         with:
           path: 'alfa.txt'
-          destination: 'folder_cz'
+          destination: 'folder_cz/subfolder'
