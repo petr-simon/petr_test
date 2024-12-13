@@ -20,8 +20,8 @@ jobs:
           service_account: 'petr-test@dev-petr.iam.gserviceaccount.com'
           credentials_json: ${{ secrets.google_cloud_storage }}
 
-      - name: 'upload-file'
+      - name: 'upload-folder'
         uses: 'google-github-actions/upload-cloud-storage@v2'
         with:
-          path: 'alfa.txt'
+          path: 'beta'
           destination: 'folder_cz/subfolder'
