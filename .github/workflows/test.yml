@@ -20,11 +20,11 @@ jobs:
           service_account: 'petr-test@dev-petr.iam.gserviceaccount.com'
           credentials_json: ${{ secrets.google_cloud_storage }}
 
-      - name: 'Set up Cloud SDK'
+      - name: '3. Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           version: '>= 363.0.0'
 
-      - name: 'upload-folder'
+      - name: '4. Upload'
         run: |
           gsutil -m rsync -r -c -d -x ".*\.pbix$|\.gitignore$|\.git/.*$|\.github/.*$" beta gs://folder_cz/subfolder
